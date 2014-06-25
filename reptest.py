@@ -1,6 +1,18 @@
 #!/usr/bin/python
-#JUSTIN'S DEAD SLAVE NASTY PYTHON SCRIPT, REQUIRES PYTHON, AS WELL AS      #
-#PYTHON MYSQL-CONNECTOR-PYTHON $ yum install mysql-connector-python python #
+'''
+############################################################################
+# JUSTIN'S DEAD SLAVE CHECKER PYTHON SCRIPT, REQUIRES PYTHON, AS WELL AS   #
+#                           mysql-connector-python                         #
+#             yum install mysql-connector-python python                    #
+#                            written by:                                   #
+#                     Justin Reiners, Hotlines Inc.                        #
+#this script uses the local socket to connect to mysql, parse results of   #
+#         SHOW SLAVE STATUS\G and decide to alert or not.                  #
+# This should be scheduled in roots crontab, at 15 minute intervals.       #
+############################################################################
+'''
+
+
 import sys
 from socket import gethostname
 import smtplib
