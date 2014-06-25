@@ -54,6 +54,7 @@ if (slave_status['Slave_IO_Running'] == 'Yes' and
     slave_status['Slave_SQL_Running'] == 'Yes' and
     slave_status['Last_Errno'] == 0):
     #print "Cool"
+    sys.exit(0)
     
     else:
     emailBody = [
