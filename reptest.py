@@ -54,8 +54,8 @@ if (slave_status['Slave_IO_Running'] == 'Yes' and
     slave_status['Slave_SQL_Running'] == 'Yes' and
     slave_status['Last_Errno'] == 0):
     #print "Cool"
-    return 0
-else:
+    
+    else:
     emailBody = [
         "From: %s" % emailFrom,
         "To: %s" % emailTo,
