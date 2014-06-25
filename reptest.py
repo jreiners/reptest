@@ -24,7 +24,7 @@ emailTo = "justin@hotlinesinc.com"
 emailFrom = "admin@hotlinesinc.com"
 
 test = "Uh oh, looks like SLAVE-IO or SLAVE-SQL is stopped on this host, please log in and see what is up. you may need to\
-issue the following command via root access. 'mysqladmin start-slave''
+issue the following command via root access. 'mysqladmin start-slave'"
 def runCmd(cmd):
     cnx = mysql.connector.connect(user='root',
                                   unix_socket='/var/lib/mysql/mysql.sock')
