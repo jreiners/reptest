@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 '''
 ############################################################################
 # JUSTIN'S DEAD SLAVE CHECKER PYTHON SCRIPT, REQUIRES PYTHON, AS WELL AS   #
@@ -23,8 +24,9 @@ emailSubject = "Replication problem on slave %s"
 emailTo = "justin@hotlinesinc.com"
 emailFrom = "admin@hotlinesinc.com"
 
-test = "Uh oh, looks like SLAVE-IO or SLAVE-SQL is stopped on this host, please log in and see what is up. you may need to\
-issue the following command via root access. 'mysqladmin start-slave'"
+text = "Uh oh, looks like SLAVE-IO or SLAVE-SQL is stopped on this host, please log in and see what is up. you may need to\
+ issue the following command via root access. 'mysqladmin start-slave'\n\n"
+
 def runCmd(cmd):
     cnx = mysql.connector.connect(user='root',
                                   unix_socket='/var/lib/mysql/mysql.sock')
@@ -57,9 +59,9 @@ else:
         "From: %s" % emailFrom,
         "To: %s" % emailTo,
         "Subject: %s" % (emailSubject %  gethostname()),
-        "",
-        '\n'.join([ k + ' : ' + str(v) for k,v in slave_status.iteritems()]),
-        "\r\n", + test
+        "", text ,
+        '\n'.join([ k + ' : '+ str(v) for k,v in slave_status.iteritems()]),
+        "\r\n",
         ]
     server = smtplib.SMTP("localhost")
     server.sendmail(emailFrom, [emailTo], '\r\n'.join(emailBody))
