@@ -56,7 +56,7 @@ if (slave_status['Slave_IO_Running'] == 'Yes' and
     #print "Cool"
     sys.exit(0)
     
-    else:
+else:
     emailBody = [
         "From: %s" % emailFrom,
         "To: %s" % emailTo,
