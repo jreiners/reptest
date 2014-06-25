@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #JUSTIN'S DEAD SLAVE NASTY PYTHON SCRIPT, REQUIRES PYTHON, AS WELL AS      #
 #PYTHON MYSQL-CONNECTOR-PYTHON $ yum install mysql-connector-python python #
 import sys
@@ -5,9 +6,11 @@ from socket import gethostname
 import smtplib
 import mysql.connector
 
+#fill in email info, uses local smtp service
 emailSubject = "Replication problem on slave %s"
 emailTo = "justin@hotlinesinc.com"
 emailFrom = "admin@hotlinesinc.com"
+
 
 def runCmd(cmd):
     cnx = mysql.connector.connect(user='root',
@@ -43,7 +46,7 @@ else:
         "Subject: %s" % (emailSubject %  gethostname()),
         "",
         '\n'.join([ k + ' : ' + str(v) for k,v in slave_status.iteritems()]),
-        "\r\n",
+        "\r\n", + test
         ]
     server = smtplib.SMTP("localhost")
     server.sendmail(emailFrom, [emailTo], '\r\n'.join(emailBody))
